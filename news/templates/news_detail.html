@@ -1,0 +1,8 @@
+{% extends "base.html" %} {% block content %}
+<div class="news-entry">
+  <h2>{{ news.title }}</h2>
+  <p>{{ news.body }}</p>
+</div>
+<a href="{% url 'post_edit' news.pk %}">+ Редактировать новость</a>
+<p><a href="{% url 'post_delete' news.pk %}">+ Удалить новость</a></p>
+{% endblock content %}

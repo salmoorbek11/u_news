@@ -1,0 +1,8 @@
+{% extends "base.html" %}
+<title>{% block title %}Главная страница{% endblock title %}</title>
+{% block content %} {% for post in news_list %}
+<div class="news-entry">
+  <h2><a href="{% url 'news_detail' post.pk %}">{{ post.title }}</a></h2>
+  <p>{{ post.body }}</p>
+</div>
+{% endfor %} {% endblock content %}
