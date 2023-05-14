@@ -38,7 +38,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    'news.apps.NewsConfig'
+    'news.apps.NewsConfig',
+
+    'accounts.apps.AccountsConfig',
 ]
 
 MIDDLEWARE = [
@@ -71,6 +73,8 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'u_news_project.wsgi.application'
 
+LOGIN_REDIRECT_URL = 'home'
+LOGOUT_REDIRECT_URL = 'home'
 
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
@@ -118,7 +122,10 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
 STATIC_URL = 'static/'
-STATIC_ROOT = BASE_DIR / 'static'
+if DEBUG:
+    STATICFILES_DIRS = [BASE_DIR / 'static']
+else:
+    STATIC_ROOT = BASE_DIR / 'static'
 
 
 # Default primary key field type

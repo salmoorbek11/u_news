@@ -19,7 +19,13 @@ Source+Sans+Pro:400"
           <a href="{% url 'news_new' %}">+ Добавить новую новость</a>
         </div>
       </header>
-      {% block content %} {% endblock content %}
+      {% if user.is_authenticated %}
+      <p>Привет {{ user.username }}!</p>
+      <p><a href="{% url 'logout' %}">Выйти</a></p>
+      {% else %}
+      <p>Вы не авторизовались.</p>
+      <a href="{% url 'login' %}">Log In</a>
+      {% endif %} {% block content %} {% endblock %}
     </div>
   </body>
 </html>
